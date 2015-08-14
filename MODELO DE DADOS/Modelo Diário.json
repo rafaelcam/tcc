@@ -1,0 +1,13 @@
+{
+  "estacao": 1234,
+  "data": "30/03/1993",
+  "hora": 1200,
+  "precipitacao": 25.6,
+  "tempmaxima": 40.1,
+  "tempminima": 12.3,
+  "insolacao": 4.5,
+  "evaporacaopiche": 5.4,
+  "tempcompmedia": 26.56,
+  "umidaderelativamedia": "sv",
+  "velocidadeventomedia": 2.666
+}
