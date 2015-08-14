@@ -1,0 +1,12 @@
+{
+  "estacao": 1234,
+  "data": "30/03/1993",
+  "hora": 1200,
+  "tempbulboseco" : 12.4,
+  "tempbulboumido": 40.1,
+  "umidaderelativa": 12.3,
+  "pressaoatmestacao": 4.5,
+  "direcaovento": 5.4,
+  "velocidadevento": 26.56,
+  "nebulosidade": "sv",
+}

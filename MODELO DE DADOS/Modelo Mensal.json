@@ -1,0 +1,22 @@
+{
+  "estacao": 1234,
+  "data": "30/03/1993",
+  "hora": 1200,
+  "direcaovento" : 12.1,
+  "velocidadeventomedia" : 12.1,
+  "velocidadeventomaximamedia" : 12.1,
+  "evaporacaopiche" : 12.1,
+  "evapobhpotencial" : 12.1,
+  "evapobhreal" : 12.1,
+  "insolacaototal" : 12.1,
+  "nebulosidademedia" : 12.1,
+  "numdiasprecipitacao" : 12.1,
+  "precipitacaototal" : 12.1,
+  "pressaonivelmarmedia" : 12.1,
+  "pressaomedia" : 12.1,
+  "tempmaximamedia" : 12.1,
+  "tempcompensadamedia" : 12.1,
+  "tempminimamedia" : 12.1,
+  "umidaderelativamedia" : 12.1,
+  "visibilidademedia" : 12.1
+}

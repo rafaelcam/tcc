@@ -87,8 +87,6 @@ public class Controle {
                         cellIndex++;
                     }
                     if(!document.isEmpty()) {
-                        
-                        System.out.println("Documento: "+document);
                         collection.insert(document);
                     }
                 }
