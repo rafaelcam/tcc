@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="appForm">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<script
+    src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+ 
+ 
+<script src="app/app.js"></script>
+<script src="app/pessoa/controller.js"></script>
+<script src="app/pessoa/services.js"></script>
+<script src="app/pessoa/constants.js"></script>
+ 
+<title>Insert title here</title>
+</head>
+<body ng-controller="ctrlPpessoasFormValidation">
+ 
+    <form name="form">
+         
+        <h3 name="messag1e" ng-bind='message' ng-required="false"></h3>
+     
+        <table>
+        <thead>
+            <tr>
+                <th>Sel</th>
+                <th>id</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Data</th>
+                <th>Data</th>
+                <th>Idade</th>                  
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="pes in listaPessoas">
+            <td>          
+            <input type="radio" ng-model="checkboxIdPessoa.id" ng-change="selectPessoa(pes)" ng-value="pes.id">
+            </input></td>
+                <td>{{pes.id}}</td>
+                <td>{{pes.nome}}</td>
+                <td>{{pes.email}}</td>              
+                <td>{{pes.nascimento}}</td>
+                <td>{{pes.dataCorrente}}</td>
+                <td>{{pes.idade}}</td>                  
+            </tr>
+        </tbody>
+    </table>  
+     
+ 
+&lt;build&gt;
+         
+    <p>
+            Id: <input type="text" name="id" ng-model="pessoa.id" readonly="true" placeholder="Id" ng-required="false" />
+            <div ng-show="form.id.$invalid">
+                <span ng-show="form.id.$error.required">Identificar Id.</span>
+                <span ng-show="form.id.$error.text">Erro preenchimento Id.</span>
+            </div>
+        </p>
+ 
+ 
+ 
+        <p>
+            Nome: <input type="text" name="nome" ng-model="pessoa.nome"  placeholder="Nome" ng-required="true" />
+            <div ng-show="form.nome.$invalid">
+                <span ng-show="form.nome.$error.required">Identificar Nome.</span>
+                <span ng-show="form.nome.$error.text">Erro preenchimento Nome.</span>
+            </div>
+        </p>
+        <p>
+            Email: <input type="email" name="uEmail" ng-model="pessoa.email" placeholder="E-mail" ng-required="true" />
+            <div ng-show="form.uEmail.$invalid">
+                <span ng-show="form.uEmail.$error.required">Identificar Email.</span>
+                 <span ng-show="form.uEmail.$error.email">Erro preenchimento Email.</span>
+            </div>
+        </p>
+         
+         
+         
+        <p>
+            Nascimento: <input type="text" name="dataNasc" ng-model="pessoa.nascimento" placehoder="YYYY-MM-DD" ng-required="true" />
+            <div ng-show="form.dataNasc.$invalid">
+                <span ng-show="form.dataNasc.$error.required">Preencha a data nascimento.</span>
+                 <span ng-show="form.dataNasc.$error.date">Data inválida.</span>
+            </div>
+        </p>
+         
+            <p>
+            Data cor: <input type="text" name="dataCorrente" ng-model="pessoa.dataCorrente" placehoder="YYYY-MM-DD" ng-required="true" />
+            <div ng-show="form.dataCorrente.$invalid">
+                <span ng-show="form.dataCorrente.$error.required">Preencher data corrente.</span>
+                     <span ng-show="form.dataCorrente.$error.date">Erro no preenchimento da data corrente.</span>
+            </div>
+        </p>
+         
+                 
+ 
+        <p>
+            <h3>Calculo de Idade:</h3>
+            <h3 name="ageP" ng-bind='pessoa.idade' ng-required="false"></h3>
+            <p>{{idadePessoa.age}}</p>
+            <div ng-show="form.ageP.$invalid">
+                <span ng-show="form.ageP.$error.required">Data.</span>
+                     <span ng-show="form.ageP.$error">Invalida idade.</span>
+            </div>
+        </p>
+ 
+ 
+<p>form.$valid = {{form.$valid}}</p><br/>
+ 
+ 
+<button ng-click="savePessoa(pessoa)" ng-disabled="form.$invalid">Salvar Pessoa</button>
+<button ng-click="updatePessoa(pessoa)" ng-disabled="form.$invalid">Atualizar Pessoa</button>
+<button ng-click="deletePessoa(pessoa)" ng-disabled="form.$invalid">Remover Pessoa</button><br/>
+ 
+ 
+<button ng-click="calcular(pessoa)" ng-disabled="form.$invalid">Calcular Idade</button><br/>
+ 
+ 
+ 
+    </form>
+ 
+ 
+</body>
+</html>
