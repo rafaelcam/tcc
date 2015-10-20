@@ -1,116 +1,81 @@
 
 package com.importdata.controller;
 
-import com.mongodb.BasicDBObject;
-import com.mongodb.DB;
-import com.mongodb.DBCollection;
-import com.mongodb.MongoClient;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import java.io.InputStream;
+import java.security.PrivilegedExceptionAction;
+import org.apache.hadoop.conf.Configuration;
+import org.apache.hadoop.fs.FSDataOutputStream;
+import org.apache.hadoop.fs.FileStatus;
+import org.apache.hadoop.fs.FileSystem;
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.IOUtils;
+import org.apache.hadoop.security.UserGroupInformation;
 
 /**
  *
  * @author jrcsilva
  */
 public class Controle {
-    public String transferExcelToMongoDB(String nomeBanco, String nomeCollection, String diretorio) throws IOException {
-        MongoClient mongoClient = null;
-        FileInputStream file = null;
-        DBCollection collection = null;
+    public String transferDataForHDFS(final String diretorio, 
+                                         final String nomeArquivo, 
+                                         final String caminhoNoHDFS) throws Exception {
         
-        try {
-            file = new FileInputStream(new File(diretorio));
-            Integer index = 0, cellIndex = 0;
-            List<String> listNameVars = new ArrayList<String>();
+        UserGroupInformation ugi = UserGroupInformation.createRemoteUser("hduser");
+        
+        ugi.doAs(new PrivilegedExceptionAction<Void>() {
+                public Void run() throws Exception {
+                   
+                    String path = diretorio.replace("\\", "//");
+        
+                    InputStream in = new FileInputStream(new File(path));
 
-            mongoClient = new MongoClient();
-            DB db = mongoClient.getDB(nomeBanco);
-            collection = db.getCollection(nomeCollection);
-            
-            BasicDBObject document;
+                    Configuration conf = new Configuration();
+                    conf.set("hadoop.job.ugi", "hduser");
+                    conf.set("fs.default.name", "hdfs://192.168.81.100:9000");
 
-            XSSFWorkbook wb = new XSSFWorkbook(file);
-            XSSFSheet folha = wb.getSheetAt(0);
+                    FileSystem fs = FileSystem.get(conf);
 
-            Iterator<Row> iterator = folha.iterator();
-            while (iterator.hasNext()) {
-                Row row = iterator.next();
+                    FSDataOutputStream out = fs.create(new Path(caminhoNoHDFS+nomeArquivo));
 
-                if(index == 0) {
-                    Iterator<Cell> iteratorCelulas = row.cellIterator();
-                    while (iteratorCelulas.hasNext()) {
-                        Cell celula = iteratorCelulas.next();
+                    IOUtils.copyBytes(in, out, conf); 
 
-                        switch (celula.getCellType()) {
-                            case Cell.CELL_TYPE_NUMERIC:
-                                collection.drop();
-                                return "A primeira linha da planilha não deve conter valores numéricos.";
-
-                            case Cell.CELL_TYPE_STRING:
-                                if(!listNameVars.contains(celula.getStringCellValue())) {
-                                    listNameVars.add(celula.getStringCellValue());
-                                } else {
-                                    collection.drop();
-                                    return "A primeira linha da planilha não deve conter células com valores repetidos.";
-                                }
-
-                                break;
-                        }
-                    }
-                } else {
-                    cellIndex = 0;
-                    document = new BasicDBObject();
+                    fs.close();
                     
-                    Iterator<Cell> iteratorCelulas = row.cellIterator();
-                    while (iteratorCelulas.hasNext()) {
-                        Cell celula = iteratorCelulas.next();
-                        
-                        switch (celula.getCellType()) {
-                            case Cell.CELL_TYPE_NUMERIC:
-                                document.put(listNameVars.get(cellIndex), celula.getNumericCellValue());
-                                break;
-                            case Cell.CELL_TYPE_STRING:
-                                document.put(listNameVars.get(cellIndex), celula.getStringCellValue());
-                                break;
-                            default:
-                                document.put(listNameVars.get(cellIndex), celula.getStringCellValue());
-                                break;
-                        }
-                        cellIndex++;
-                    }
-                    if(!document.isEmpty()) {
-                        collection.insert(document);
-                    }
+                    return null;
+                }
+            });
+        
+        return "Transferência concluida com sucesso";
+    }
+    
+    public String listFilesAndDirectoriesByDirectory(final String diretorioHDFS) throws Exception {
+        
+        UserGroupInformation ugi = UserGroupInformation.createRemoteUser("hduser");
+        
+        return ugi.doAs(new PrivilegedExceptionAction<String>() {
+            public String run() throws Exception {
+                String result = "";
+                Path path = new Path(diretorioHDFS);
+                System.out.println("Testando 123");
+                Configuration conf = new Configuration();
+                conf.set("hadoop.job.ugi", "hduser");
+                conf.set("fs.default.name", "hdfs://192.168.81.100:9000");
+
+                FileSystem fs = FileSystem.get(conf);
+                
+                FileStatus[] files = fs.listStatus(path);
+
+                for(FileStatus file : files) {
+                    result += file.getPath().getName()+"\n";
                 }
 
-                index++;
+                fs.close();
+
+                return result;
             }
-            mongoClient.close();
-            file.close();
-            return "Os dados foram importados com sucesso para o Banco "+nomeBanco+".";
-        } catch (Exception e) {
-            if(collection != null) {
-                collection.drop();
-            }
-            
-            if(mongoClient != null) {
-                mongoClient.close();
-            }
-            
-            if(file != null) {
-                file.close();
-            }
-            
-            e.printStackTrace();
-            return "Ocorreu um erro inesperado na gravação do Banco de Dados.";
-        }
+        });
     }
 }

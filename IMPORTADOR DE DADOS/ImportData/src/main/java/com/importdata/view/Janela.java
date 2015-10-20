@@ -37,16 +37,19 @@ public class Janela extends javax.swing.JFrame {
     private void initComponents() {
 
         labelTitulo = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        labelDiretorio = new javax.swing.JLabel();
-        txtDiretorio = new javax.swing.JTextField();
-        labelEscala = new javax.swing.JLabel();
-        btGravar = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        txtNomeBanco = new javax.swing.JTextField();
+        btTransferir = new javax.swing.JButton();
+        txtCaminhoHDFS = new javax.swing.JTextField();
+        txtNomeArquivo = new javax.swing.JTextField();
+        txtDiretorio = new javax.swing.JTextField();
+        labelDiretorio = new javax.swing.JLabel();
+        labelEscala = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtNomeCollection = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        labelDiretorioListar = new javax.swing.JLabel();
+        txtDiretorioListar = new javax.swing.JTextField();
+        btListar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("IMPORTADOR");
@@ -54,27 +57,24 @@ public class Janela extends javax.swing.JFrame {
         setResizable(false);
 
         labelTitulo.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        labelTitulo.setText("IMPORTADOR DE DADOS EXCEL PARA MONGODB");
+        labelTitulo.setText("IMPORTADOR DE ARQUIVOS HDFS");
 
-        labelDiretorio.setText("Diretório Arquivo");
-
-        txtDiretorio.setMaximumSize(new java.awt.Dimension(360, 360));
-
-        labelEscala.setText("Nome do Banco");
-
-        btGravar.setText("Gravar");
-        btGravar.addActionListener(new java.awt.event.ActionListener() {
+        btTransferir.setText("Transferir");
+        btTransferir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btGravarActionPerformed(evt);
+                btTransferirActionPerformed(evt);
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(153, 153, 153));
-        jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        txtNomeArquivo.setMaximumSize(new java.awt.Dimension(360, 360));
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Obs: As células da primeira linha da planilha serão ultilizadas para a nomeação das chaves de uma collection no MongoDB.");
+        txtDiretorio.setMaximumSize(new java.awt.Dimension(360, 360));
+
+        labelDiretorio.setText("Diretório Arquivo");
+
+        labelEscala.setText("Nome do Arquivo");
+
+        jLabel2.setText("Caminho no HDFS");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -82,119 +82,166 @@ public class Janela extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(labelDiretorio)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtDiretorio, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(labelEscala))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btTransferir)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txtNomeArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtCaminhoHDFS, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDiretorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelDiretorio))
+                .addGap(10, 10, 10)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNomeArquivo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelEscala))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtCaminhoHDFS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btTransferir)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        txtNomeBanco.setMaximumSize(new java.awt.Dimension(360, 360));
+        jTabbedPane1.addTab("Transferir", jPanel1);
 
-        jLabel2.setText("Nome da Collection");
+        labelDiretorioListar.setText("Diretório");
+
+        txtDiretorioListar.setMaximumSize(new java.awt.Dimension(360, 360));
+
+        btListar.setText("Listar");
+        btListar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btListarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelDiretorioListar)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btListar)
+                    .addComponent(txtDiretorioListar, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDiretorioListar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelDiretorioListar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btListar)
+                .addContainerGap(71, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Listar Diretórios e Arquivos", jPanel2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(128, 128, 128)
-                        .addComponent(labelTitulo))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGap(101, 101, 101)
-                                    .addComponent(btGravar))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGap(10, 10, 10)
-                                    .addComponent(labelDiretorio)
-                                    .addGap(321, 321, 321)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(txtDiretorio, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jLabel2)
-                                        .addComponent(labelEscala))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(txtNomeBanco, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(txtNomeCollection, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                .addGap(99, 99, 99)
+                .addComponent(labelTitulo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labelTitulo)
-                .addGap(6, 6, 6)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addComponent(labelDiretorio))
-                    .addComponent(txtDiretorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNomeBanco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelEscala))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtNomeCollection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btGravar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btGravarActionPerformed
-        btGravar.setEnabled(false);
+    private void btTransferirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btTransferirActionPerformed
+        btTransferir.setEnabled(false);
         if(this.txtDiretorio.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Diretório - Preenchimento Obrigatório", null, JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        if(this.txtNomeBanco.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Nome do Banco - Preenchimento Obrigatório", null, JOptionPane.ERROR_MESSAGE);
+        if(this.txtNomeArquivo.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Nome do Arquivo - Preenchimento Obrigatório", null, JOptionPane.ERROR_MESSAGE);
             return;   
         }
 
-        if(this.txtNomeCollection.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Nome da Collection - Preenchimento Obrigatório", null, JOptionPane.ERROR_MESSAGE);
+        if(this.txtCaminhoHDFS.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Caminho no HDFS - Preenchimento Obrigatório", null, JOptionPane.ERROR_MESSAGE);
             return;   
         }
 
         try {
-            String returno = controle.transferExcelToMongoDB(this.txtNomeBanco.getText(), 
-                                                             this.txtNomeCollection.getText(), 
-                                                             this.txtDiretorio.getText());
+            String returno = controle.transferDataForHDFS(
+                    this.txtDiretorio.getText(),
+                    this.txtNomeArquivo.getText(),
+                    this.txtCaminhoHDFS.getText()
+            );
 
 
             JOptionPane.showMessageDialog(null, returno);
-            btGravar.setEnabled(true);
+            btTransferir.setEnabled(true);
         } catch (IOException ex) {
+            btTransferir.setEnabled(true);
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado.");
+            
+            ex.printStackTrace();
+            Logger.getLogger(Janela.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception ex) {
+            btTransferir.setEnabled(true);
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado.");
+            
+            ex.printStackTrace();
             Logger.getLogger(Janela.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_btGravarActionPerformed
+    }//GEN-LAST:event_btTransferirActionPerformed
+
+    private void btListarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListarActionPerformed
+        btListar.setEnabled(false);
+        if(this.txtDiretorioListar.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Diretório - Preenchimento Obrigatório", null, JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        try {
+            String returno = controle.listFilesAndDirectoriesByDirectory(this.txtDiretorioListar.getText());
+            JOptionPane.showMessageDialog(this, returno);
+            btListar.setEnabled(true);
+        } catch (Exception ex) {
+            btTransferir.setEnabled(true);
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado.");
+            
+            ex.printStackTrace();
+            Logger.getLogger(Janela.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btListarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,16 +262,19 @@ public class Janela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btGravar;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btListar;
+    private javax.swing.JButton btTransferir;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel labelDiretorio;
+    private javax.swing.JLabel labelDiretorioListar;
     private javax.swing.JLabel labelEscala;
     private javax.swing.JLabel labelTitulo;
+    private javax.swing.JTextField txtCaminhoHDFS;
     private javax.swing.JTextField txtDiretorio;
-    private javax.swing.JTextField txtNomeBanco;
-    private javax.swing.JTextField txtNomeCollection;
+    private javax.swing.JTextField txtDiretorioListar;
+    private javax.swing.JTextField txtNomeArquivo;
     // End of variables declaration//GEN-END:variables
 }
