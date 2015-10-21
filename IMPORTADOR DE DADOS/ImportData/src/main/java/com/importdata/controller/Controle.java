@@ -3,7 +3,6 @@ package com.importdata.controller;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.io.InputStream;
 import java.security.PrivilegedExceptionAction;
 import org.apache.hadoop.conf.Configuration;
@@ -59,7 +58,7 @@ public class Controle {
             public String run() throws Exception {
                 String result = "";
                 Path path = new Path(diretorioHDFS);
-                System.out.println("Testando 123");
+
                 Configuration conf = new Configuration();
                 conf.set("hadoop.job.ugi", "hduser");
                 conf.set("fs.default.name", "hdfs://192.168.81.100:9000");
@@ -75,6 +74,58 @@ public class Controle {
                 fs.close();
 
                 return result;
+            }
+        });
+    }
+    
+    public void removeDirectory(final String diretorioHDFS) throws Exception {
+        
+        UserGroupInformation ugi = UserGroupInformation.createRemoteUser("hduser");
+        
+        ugi.doAs(new PrivilegedExceptionAction<Void>() {
+            public Void run() throws Exception {
+                
+                Path path = new Path(diretorioHDFS);
+
+                Configuration conf = new Configuration();
+                conf.set("hadoop.job.ugi", "hduser");
+                conf.set("fs.default.name", "hdfs://192.168.81.100:9000");
+
+                FileSystem fs = FileSystem.get(conf);
+
+                fs.delete(path, true);
+
+                fs.close();
+                
+                return null;
+
+            }
+        });
+    }
+    
+    public void readFile(final String diretorioHDFS) throws Exception {
+        
+        UserGroupInformation ugi = UserGroupInformation.createRemoteUser("hduser");
+        
+        ugi.doAs(new PrivilegedExceptionAction<Void>() {
+            public Void run() throws Exception {
+                
+                Path path = new Path(diretorioHDFS);
+
+                Configuration conf = new Configuration();
+                conf.set("hadoop.job.ugi", "hduser");
+                conf.set("fs.default.name", "hdfs://192.168.81.100:9000");
+
+                FileSystem fs = FileSystem.get(conf);
+
+                InputStream input = fs.open(path);
+
+                IOUtils.copyBytes(input, System.out, 4096);
+
+                fs.close();
+                
+                return null;
+
             }
         });
     }
