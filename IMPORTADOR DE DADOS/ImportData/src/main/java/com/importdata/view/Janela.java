@@ -50,6 +50,14 @@ public class Janela extends javax.swing.JFrame {
         labelDiretorioListar = new javax.swing.JLabel();
         txtDiretorioListar = new javax.swing.JTextField();
         btListar = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        txtDiretorioRemover = new javax.swing.JTextField();
+        labelDiretorioRemover = new javax.swing.JLabel();
+        btRemover = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        txtDiretorioLer = new javax.swing.JTextField();
+        btLer = new javax.swing.JButton();
+        labelDiretorioLer = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("IMPORTADOR");
@@ -82,22 +90,24 @@ public class Janela extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addComponent(labelDiretorio)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtDiretorio, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(txtDiretorio, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel2)
                             .addComponent(labelEscala))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btTransferir)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtNomeArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtCaminhoHDFS, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btTransferir)
+                                .addGap(0, 347, Short.MAX_VALUE))
+                            .addComponent(txtCaminhoHDFS)
+                            .addComponent(txtNomeArquivo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -141,9 +151,11 @@ public class Janela extends javax.swing.JFrame {
                 .addComponent(labelDiretorioListar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btListar)
-                    .addComponent(txtDiretorioListar, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(19, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(btListar)
+                        .addGap(0, 437, Short.MAX_VALUE))
+                    .addComponent(txtDiretorioListar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,17 +166,102 @@ public class Janela extends javax.swing.JFrame {
                     .addComponent(labelDiretorioListar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btListar)
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Listar Diretórios e Arquivos", jPanel2);
+
+        txtDiretorioRemover.setMaximumSize(new java.awt.Dimension(360, 360));
+        txtDiretorioRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDiretorioRemoverActionPerformed(evt);
+            }
+        });
+
+        labelDiretorioRemover.setText("Diretório");
+
+        btRemover.setText("Remover");
+        btRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRemoverActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelDiretorioRemover)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(btRemover)
+                        .addGap(0, 417, Short.MAX_VALUE))
+                    .addComponent(txtDiretorioRemover, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDiretorioRemover, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelDiretorioRemover))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btRemover)
+                .addContainerGap(80, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Remover Diretório", jPanel3);
+
+        txtDiretorioLer.setMaximumSize(new java.awt.Dimension(360, 360));
+
+        btLer.setText("Ler");
+        btLer.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLerActionPerformed(evt);
+            }
+        });
+
+        labelDiretorioLer.setText("Diretório");
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelDiretorioLer)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(btLer)
+                        .addGap(0, 449, Short.MAX_VALUE))
+                    .addComponent(txtDiretorioLer, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtDiretorioLer, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelDiretorioLer))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btLer)
+                .addContainerGap(80, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Ler Arquivo", jPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(99, 99, 99)
+                .addGap(95, 95, 95)
                 .addComponent(labelTitulo)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jTabbedPane1)
@@ -175,7 +272,7 @@ public class Janela extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labelTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -243,6 +340,50 @@ public class Janela extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btListarActionPerformed
 
+    private void btRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRemoverActionPerformed
+        btRemover.setEnabled(false);
+        if(this.txtDiretorioRemover.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Diretório - Preenchimento Obrigatório", null, JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        try {
+            controle.removeDirectory(this.txtDiretorioRemover.getText());
+            JOptionPane.showMessageDialog(null, "Diretório removido com sucesso.");
+            btRemover.setEnabled(true);
+        } catch (Exception ex) {
+            btRemover.setEnabled(true);
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado.");
+            
+            ex.printStackTrace();
+            Logger.getLogger(Janela.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btRemoverActionPerformed
+
+    private void btLerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLerActionPerformed
+        btLer.setEnabled(false);
+        if(this.txtDiretorioLer.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Diretório - Preenchimento Obrigatório", null, JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        try {
+            controle.readFile(this.txtDiretorioLer.getText());
+            JOptionPane.showMessageDialog(null, "Sucesso! Veja o log.");
+            btLer.setEnabled(true);
+        } catch (Exception ex) {
+            btLer.setEnabled(true);
+            JOptionPane.showMessageDialog(null, "Ocorreu um erro inesperado.");
+            
+            ex.printStackTrace();
+            Logger.getLogger(Janela.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btLerActionPerformed
+
+    private void txtDiretorioRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDiretorioRemoverActionPerformed
+        
+    }//GEN-LAST:event_txtDiretorioRemoverActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -262,19 +403,27 @@ public class Janela extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btLer;
     private javax.swing.JButton btListar;
+    private javax.swing.JButton btRemover;
     private javax.swing.JButton btTransferir;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel labelDiretorio;
+    private javax.swing.JLabel labelDiretorioLer;
     private javax.swing.JLabel labelDiretorioListar;
+    private javax.swing.JLabel labelDiretorioRemover;
     private javax.swing.JLabel labelEscala;
     private javax.swing.JLabel labelTitulo;
     private javax.swing.JTextField txtCaminhoHDFS;
     private javax.swing.JTextField txtDiretorio;
+    private javax.swing.JTextField txtDiretorioLer;
     private javax.swing.JTextField txtDiretorioListar;
+    private javax.swing.JTextField txtDiretorioRemover;
     private javax.swing.JTextField txtNomeArquivo;
     // End of variables declaration//GEN-END:variables
 }
