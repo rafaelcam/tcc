@@ -23,7 +23,7 @@ public class Pessoa {
      *
      */
     public Pessoa() {
-        // TODO Auto-generated constructor stub
+        
     }
  
     public Pessoa(int id, String nome, String email, Date nascimento, Date dataCorrente, int idade) {
