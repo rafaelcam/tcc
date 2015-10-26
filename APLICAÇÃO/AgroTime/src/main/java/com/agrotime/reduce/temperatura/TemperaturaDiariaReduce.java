@@ -10,7 +10,7 @@ import org.apache.hadoop.mapred.OutputCollector;
 import org.apache.hadoop.mapred.Reducer;
 import org.apache.hadoop.mapred.Reporter;
 
-public class TempJaneiroReduce extends MapReduceBase implements Reducer<Text, FloatWritable, Text, FloatWritable> {
+public class TemperaturaDiariaReduce extends MapReduceBase implements Reducer<Text, FloatWritable, Text, FloatWritable> {
 
     @Override
     public void reduce(Text key, Iterator<FloatWritable> values, OutputCollector<Text, FloatWritable> output, Reporter reporter) throws IOException {

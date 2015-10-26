@@ -1,5 +1,6 @@
-pessoasFormValidation.controller("ctrlPpessoasFormValidation", function($scope,
-        serviceForm) {
+agroTimeApp.controller("ctrlPpessoasFormValidation", function($scope, serviceForm) {
+ 
+ alert('Testando controller');
  
     $scope.listaPessoas = {};
     $scope.pessoa = {};

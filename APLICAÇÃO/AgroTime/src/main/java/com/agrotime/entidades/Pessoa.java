@@ -1,6 +1,7 @@
 
 package com.agrotime.entidades;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -10,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author João
  */
 @XmlRootElement
-public class Pessoa {
+public class Pessoa implements Serializable {
  
     private int id;
     private String nome;

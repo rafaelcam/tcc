@@ -1,214 +1,232 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-	<title>Empty File | Melon - Flat &amp; Responsive Admin Template</title>
+<html lang="en" ng-app="agroTimeApp">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+        <title>Charts &amp; Statistics | Melon - Flat &amp; Responsive Admin Template</title>
 
-	<!--=== CSS ===-->
+        <!--=== CSS ===-->
 
-	<!-- Bootstrap -->
-	<link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <!-- Bootstrap -->
+        <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
-	<!-- jQuery UI -->
-	<!--<link href="plugins/jquery-ui/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css" />-->
-	<!--[if lt IE 9]>
-		<link rel="stylesheet" type="text/css" href="plugins/jquery-ui/jquery.ui.1.10.2.ie.css"/>
-	<![endif]-->
+        <!-- jQuery UI -->
+        <!--<link href="resources/plugins/jquery-ui/jquery-ui-1.10.2.custom.css" rel="stylesheet" type="text/css" />-->
+        <!--[if lt IE 9]>
+                <link rel="stylesheet" type="text/css" href="resources/plugins/jquery-ui/jquery.ui.1.10.2.ie.css"/>
+        <![endif]-->
 
-	<!-- Theme -->
-	<link href="resources/assets/css/main.css" rel="stylesheet" type="text/css" />
-	<link href="resources/assets/css/plugins.css" rel="stylesheet" type="text/css" />
-	<link href="resources/assets/css/responsive.css" rel="stylesheet" type="text/css" />
-	<link href="resources/assets/css/icons.css" rel="stylesheet" type="text/css" />
+        <!-- Theme -->
+        <link href="resources/assets/css/main.css" rel="stylesheet" type="text/css" />
+        <link href="resources/assets/css/plugins.css" rel="stylesheet" type="text/css" />
+        <link href="resources/assets/css/responsive.css" rel="stylesheet" type="text/css" />
+        <link href="resources/assets/css/icons.css" rel="stylesheet" type="text/css" />
 
-	<link rel="stylesheet" href="resources/assets/css/fontawesome/font-awesome.min.css">
-	<!--[if IE 7]>
-		<link rel="stylesheet" href="resources/assets/css/fontawesome/font-awesome-ie7.min.css">
-	<![endif]-->
+        <link rel="stylesheet" href="resources/assets/css/fontawesome/font-awesome.min.css">
+        <!--[if IE 7]>
+                <link rel="stylesheet" href="resources/assets/css/fontawesome/font-awesome-ie7.min.css">
+        <![endif]-->
 
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+        <!--[if IE 8]>
+                <link href="resources/assets/css/ie8.css" rel="stylesheet" type="text/css" />
+        <![endif]-->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
 
-	<!--=== JavaScript ===-->
+        <!--=== JavaScript ===-->
 
-	<script type="text/javascript" src="resources/assets/js/libs/jquery-1.10.2.min.js"></script>
-	<script type="text/javascript" src="resources/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
+        <!-- Aplicação Angular -->
+        <script src="resources/angular/angular.min.js"></script>
+        <script src="resources/angular/angular-ui-router.min.js"></script>
 
-	<script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="resources/assets/js/libs/lodash.compat.min.js"></script>
+        <!-- Aplicação Angular -->
+        <script src="app/app.js"></script>
+        <script src="app/pessoa/controller.js"></script>
+        <script src="app/pessoa/services.js"></script>
+        <script src="app/pessoa/constants.js"></script>
 
-	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-	<!--[if lt IE 9]>
-		<script src="resources/assets/js/libs/html5shiv.js"></script>
-	<![endif]-->
+        <script type="text/javascript" src="resources/assets/js/libs/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="resources/plugins/jquery-ui/jquery-ui-1.10.2.custom.min.js"></script>
 
-	<!-- Smartphone Touch Events -->
-	<script type="text/javascript" src="resources/plugins/touchpunch/jquery.ui.touch-punch.min.js"></script>
-	<script type="text/javascript" src="resources/plugins/event.swipe/jquery.event.move.js"></script>
-	<script type="text/javascript" src="resources/plugins/event.swipe/jquery.event.swipe.js"></script>
+        <script type="text/javascript" src="resources/bootstrap/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="resources/assets/js/libs/lodash.compat.min.js"></script>
 
-	<!-- General -->
-	<script type="text/javascript" src="resources/assets/js/libs/breakpoints.js"></script>
-	<script type="text/javascript" src="resources/plugins/respond/respond.min.js"></script> <!-- Polyfill for min/max-width CSS3 Media Queries (only for IE8) -->
-	<script type="text/javascript" src="resources/plugins/cookie/jquery.cookie.min.js"></script>
-	<script type="text/javascript" src="resources/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-	<script type="text/javascript" src="resources/plugins/slimscroll/jquery.slimscroll.horizontal.min.js"></script>
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+                <script src="resources/assets/js/libs/html5shiv.js"></script>
+        <![endif]-->
 
-	<!-- App -->
-	<script type="text/javascript" src="resources/assets/js/app.js"></script>
-	<script type="text/javascript" src="resources/assets/js/plugins.js"></script>
-	<script type="text/javascript" src="resources/assets/js/plugins.form-components.js"></script>
+        <!-- Smartphone Touch Events -->
+        <script type="text/javascript" src="resources/plugins/touchpunch/jquery.ui.touch-punch.min.js"></script>
+        <script type="text/javascript" src="resources/plugins/event.swipe/jquery.event.move.js"></script>
+        <script type="text/javascript" src="resources/plugins/event.swipe/jquery.event.swipe.js"></script>
 
-	<script>
-	$(document).ready(function(){
-		"use strict";
+        <!-- General -->
+        <script type="text/javascript" src="resources/assets/js/libs/breakpoints.js"></script>
+        <script type="text/javascript" src="resources/plugins/respond/respond.min.js"></script> <!-- Polyfill for min/max-width CSS3 Media Queries (only for IE8) -->
+        <script type="text/javascript" src="resources/plugins/cookie/jquery.cookie.min.js"></script>
+        <script type="text/javascript" src="resources/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+        <script type="text/javascript" src="resources/plugins/slimscroll/jquery.slimscroll.horizontal.min.js"></script>
 
-		App.init(); // Init layout and core plugins
-		Plugins.init(); // Init all plugins
-		FormComponents.init(); // Init all form-specific plugins
-	});
-	</script>
-</head>
+        <!-- App -->
+        <script type="text/javascript" src="resources/assets/js/app.js"></script>
+        <script type="text/javascript" src="resources/assets/js/plugins.js"></script>
+        <script type="text/javascript" src="resources/assets/js/plugins.form-components.js"></script>
 
-<body class="breakpoint-1200 theme-dark">
+        <script>
+            $(document).ready(function () {
+                "use strict";
 
-	<!-- Header -->
-	<header class="header navbar navbar-fixed-top" role="banner">
-		<!-- Top Navigation Bar -->
-		<div class="container">
+                App.init(); // Init layout and core plugins
+                Plugins.init(); // Init all plugins
+                FormComponents.init(); // Init all form-specific plugins
+            });
+        </script>
+    </head>
 
-			<!-- Only visible on smartphones, menu toggle -->
-			<ul class="nav navbar-nav">
-				<li class="nav-toggle"><a href="javascript:void(0);" title=""><i class="icon-reorder"></i></a></li>
-			</ul>
+    <body class="breakpoint-1200 theme-dark">
 
-			<!-- Logo -->
-			<a class="navbar-brand" href="index.html">
-				<img src="resources/assets/img/logo_1.png" alt="logo" />
-				<strong>AGRO</strong>TIME
-			</a>
-			<!-- /logo -->
+        <!-- Header -->
+        <header class="header navbar navbar-fixed-top" role="banner">
+            <!-- Top Navigation Bar -->
+            <div class="container">
 
-			<!-- Sidebar Toggler -->
-			<a href="#" class="toggle-sidebar bs-tooltip" data-placement="bottom" data-original-title="Toggle navigation">
-				<i class="icon-reorder"></i>
-			</a>
-			<!-- /Sidebar Toggler -->
+                <!-- Only visible on smartphones, menu toggle -->
+                <ul class="nav navbar-nav">
+                    <li class="nav-toggle"><a href="javascript:void(0);" title=""><i class="icon-reorder"></i></a></li>
+                </ul>
 
-			<!-- Top Left Menu -->
-			<ul class="nav navbar-nav navbar-left hidden-xs hidden-sm">
-				<li>
-					<a href="#">
-						Ajuda
-					</a>
-				</li>
-			</ul>
-			<!-- /Top Left Menu -->
+                <!-- Logo -->
+                <a class="navbar-brand" href="index.html">
+                    <img src="resources/assets/img/logo_1.png" alt="logo" />
+                    <strong>AGRO</strong>TIME
+                </a>
+                <!-- /logo -->
 
-			<!-- Top Right Menu -->
-			<ul class="nav navbar-nav navbar-right">
-				<!-- User Login Dropdown -->
-				<li class="dropdown user">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<i class="icon-male"></i>
-						<span class="username">João Rafael</span>
-						<i class="icon-caret-down small"></i>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="login.html"><i class="icon-key"></i> Sair</a></li>
-					</ul>
-				</li>
-				<!-- /user login dropdown -->
-			</ul>
-			<!-- /Top Right Menu -->
-		</div>
-		<!-- /top navigation bar -->
-	</header> <!-- /.header -->
+                <!-- Sidebar Toggler -->
+                <a href="#" class="toggle-sidebar bs-tooltip" data-placement="bottom" data-original-title="Toggle navigation">
+                    <i class="icon-reorder"></i>
+                </a>
+                <!-- /Sidebar Toggler -->
 
-	<div id="container">
-		<div id="sidebar" class="sidebar-fixed">
-			<div id="sidebar-content">
+                <!-- Top Left Menu -->
+                <ul class="nav navbar-nav navbar-left hidden-xs hidden-sm">
+                    <li>
+                        <a href="#">
+                            Ajuda
+                        </a>
+                    </li>
+                </ul>
+                <!-- /Top Left Menu -->
 
-				<!--=== Navigation ===-->
-				<ul id="nav">
-					<li class="current">
-						<a href="index.html">
-							<i class="icon-dashboard"></i>
-							Início
-						</a>
-					</li>
-					<li>
-						<a href="javascript:void(0);">
-							<i class="icon-desktop"></i>
-							Consultas
-						</a>
-						<ul class="sub-menu">
-							<li>
-								<a href="ui_general.html">
-								<i class="icon-angle-right"></i>
-								Diária
-								</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-				<!-- /Navigation -->
-			</div>
-			<div id="divider" class="resizeable"></div>
-		</div>
-		<!-- /Sidebar -->
+                <!-- Top Right Menu -->
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- User Login Dropdown -->
+                    <li class="dropdown user">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="icon-male"></i>
+                            <span class="username">João Rafael</span>
+                            <i class="icon-caret-down small"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="login.html"><i class="icon-key"></i> Sair</a></li>
+                        </ul>
+                    </li>
+                    <!-- /user login dropdown -->
+                </ul>
+                <!-- /Top Right Menu -->
+            </div>
+            <!-- /top navigation bar -->
+        </header> <!-- /.header -->
 
-		<div id="content">
-			<div class="container">
-				<!-- Breadcrumbs line -->
-				<div class="crumbs">
-					<ul id="breadcrumbs" class="breadcrumb">
-						<li>
-							<i class="icon-home"></i>
-							<a href="index.html">Início</a>
-						</li>
-						<li class="current">
-							<a href="calendar.html" title="">Calendário</a>
-						</li>
-					</ul>
+        <div id="container">
+            <div id="sidebar" class="sidebar-fixed">
+                <div id="sidebar-content">
 
-					<ul class="crumb-buttons">
-						<li><a href="charts.html" title=""><i class="icon-signal"></i><span>Estatísticas</span></a></li>
-					</ul>
-				</div>
-				<!-- /Breadcrumbs line -->
+                    <!--=== Navigation ===-->
+                    <ul id="nav">
+                        <li class="current">
+                            <a href="index.html">
+                                <i class="icon-dashboard"></i>
+                                Início
+                            </a>
+                        </li>
 
-				<!--=== Page Header ===-->
-				<div class="page-header">
-					<div class="page-title">
-						<h3>Início</h3>
-						<span>Boa Noite, João Rafael!</span>
-					</div>
-				</div>
-				<!-- /Page Header -->
+                        <li >
+                            <a href="temperatura.html">
+                                <i class="icon-dashboard"></i>
+                                Temperatura Diária
+                            </a>
+                        </li>
 
-				<!--=== Page Content ===-->
-				<div class="row">
-					<!--=== Example Box ===-->
-					<div class="col-md-12">
-						<div class="widget box">
-							<div class="widget-header">
-								<h4><i class="icon-reorder"></i> Example Box</h4>
-							</div>
-							<div class="widget-content">
-								<p>Lorem Ipsum.</p>
-							</div>
-						</div>
-					</div> <!-- /.col-md-12 -->
-					<!-- /Example Box -->
-				</div> <!-- /.row -->
-				<!-- /Page Content -->
+                        <li>
+                            <a href="javascript:void(0);">
+                                <i class="icon-desktop"></i>
+                                Consultas
+                            </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="ui_general.html">
+                                        <i class="icon-angle-right"></i>
+                                        Diária
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <!-- /Navigation -->
+                </div>
+                <div id="divider" class="resizeable"></div>
+            </div>
+            <!-- /Sidebar -->
 
-			</div>
-			<!-- /.container -->
+            <div id="content">
+                <div class="container">
+                    <!-- Breadcrumbs line -->
+                    <div class="crumbs">
+                        <ul id="breadcrumbs" class="breadcrumb">
+                            <li>
+                                <i class="icon-home"></i>
+                                <a href="index.html">Início</a>
+                            </li>
+                            <li class="current">
+                                <a href="calendar.html" title="">Calendário</a>
+                            </li>
+                        </ul>
 
-		</div>
-	</div>
+                        <ul class="crumb-buttons">
+                            <li><a href="charts.html" title=""><i class="icon-signal"></i><span>Estatísticas</span></a></li>
+                        </ul>
+                    </div>
+                    <!-- /Breadcrumbs line -->
 
-</body>
+                    <!--=== Page Header ===-->
+                    <div class="page-header">
+                        <div class="page-title">
+                            <h3>Início</h3>
+                            <span>Boa Noite, João Rafael!</span>
+                        </div>
+                    </div>
+                    <!-- /Page Header -->
+
+                    <!--=== Page Content ===-->
+                    <div class="row">
+                        <!--=== Example Box ===-->
+                        <div class="col-md-12">
+                            <div class="widget box">
+                                <div class="widget-header">
+                                    <h4><i class="icon-reorder"></i> Example Box</h4>
+                                </div>
+                                <div class="widget-content">
+                                    <p>Lorem Ipsum.</p>
+                                </div>
+                            </div>
+                        </div> <!-- /.col-md-12 -->
+                        <!-- /Example Box -->
+                    </div> <!-- /.row -->
+                    <!-- /Page Content -->
+
+                </div>
+            </div>
+        </div>
+    </body>
 </html>

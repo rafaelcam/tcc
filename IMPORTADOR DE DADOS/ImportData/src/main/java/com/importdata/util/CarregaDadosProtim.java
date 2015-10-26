@@ -31,7 +31,7 @@ public class CarregaDadosProtim {
                 public Void run() throws Exception {
                    
                     CarregaDadosProtim c = new CarregaDadosProtim();
-                    c.transferDataFromHDFS(1996, 2015, "D:\\tcc\\DADOS METEREOLOGICOS PROTIM PLATAFORMAS");
+                    c.transferDataFromHDFS(1996, 2015, "D:\\Repositorios Git\\tcc\\DADOS METEREOLOGICOS PROTIM PLATAFORMAS");
                     return null; 
                 }
             });

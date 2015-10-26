@@ -36,18 +36,19 @@ public class TempJaneiroMapReduce {
     }
 	
 	
-	public int executeMapReduce() throws Exception {
+    public int executeMapReduce() throws Exception {
         
         JobConf conf = new JobConf(Enem.class);
         conf.setJobName("Temperatura Diaria Janeiro");
         conf.set("hadoop.job.ugi", "hduser");
         conf.set("fs.default.name", "hdfs://192.168.81.100:9000");
         conf.set("mapred.job.tracker", "192.168.81.100:9001");
+        conf.set("mes", "01");
         
         long milliSeconds = 1000*60*60;
         conf.setLong("mapred.task.timeout", milliSeconds);
         
-        conf.setJar("D://HadoopTests-1.0-SNAPSHOT.jar");
+        conf.setJar("D:\\Repositorios Git\\tcc\\TESTES\\HadoopTests\\target\\HadoopTests-1.0-SNAPSHOT.jar");
 
         conf.setOutputKeyClass(Text.class);
         conf.setOutputValueClass(FloatWritable.class);

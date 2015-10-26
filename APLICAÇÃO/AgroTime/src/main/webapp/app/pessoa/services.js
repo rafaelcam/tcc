@@ -1,4 +1,4 @@
-pessoasFormValidation.factory("serviceForm", function(config, $http) {
+agroTimeApp.factory("serviceForm", function(config, $http) {
  
     var _getAllPessoas = function() {
         return $http.get("rest/pessoa/all");
