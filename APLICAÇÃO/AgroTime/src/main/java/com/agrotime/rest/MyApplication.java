@@ -17,7 +17,7 @@ import org.glassfish.jersey.jackson.JacksonFeature;
  */
 @ApplicationPath("/rest/")
 public class MyApplication extends Application {
-
+	
     @Override
     public Set<Class<?>> getClasses() {
         final Set<Class<?>> classes = new HashSet<Class<?>>();

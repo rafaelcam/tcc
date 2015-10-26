@@ -7,7 +7,6 @@ package com.agrotime.bo;
 
 import com.agrotime.mapreduce.temperatura.TemperaturaDiariaMapReduce;
 import com.agrotime.util.HDFSUtil;
-import javax.inject.Inject;
 
 /**
  *
@@ -15,15 +14,9 @@ import javax.inject.Inject;
  */
 public class TemperaturaDiariaBO {
     
-    @Inject
-    private TemperaturaDiariaMapReduce temperaturaDiariaMapReduce;
-    
-    @Inject
-    private HDFSUtil hdfsUtil;
-    
     public void processarDadosTemperaturaDiaria() throws Exception {
-        hdfsUtil.removeDirectory("/agrotime/output/temperaturadiaria");
-        temperaturaDiariaMapReduce.runMapReduce("01");
+        new HDFSUtil().removeDirectory("/agrotime/output/temperaturadiaria");
+        new TemperaturaDiariaMapReduce().runMapReduce("01");
     }
     
 }

@@ -12,17 +12,20 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import com.agrotime.bo.TemperaturaDiariaBO;
 import com.agrotime.entidades.Pessoa;
 
 @Path("/pessoa")
 public class PessoaRecurso {
- 
+	
     // Jackson
     @GET
     @Produces({ MediaType.APPLICATION_JSON/* , MediaType.APPLICATION_XML */ })
     @Path("/all")
     public List<Pessoa> getPessoasJSONP() {
  
+    	System.out.println("Inject Temp: "+new TemperaturaDiariaBO());
+    	
         List<Pessoa> listP = Util.getInstance().getlPessoa();
  
         return listP;
