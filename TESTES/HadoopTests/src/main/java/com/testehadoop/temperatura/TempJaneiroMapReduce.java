@@ -48,7 +48,7 @@ public class TempJaneiroMapReduce {
         long milliSeconds = 1000*60*60;
         conf.setLong("mapred.task.timeout", milliSeconds);
         
-        conf.setJar("D:\\Repositorios Git\\tcc\\TESTES\\HadoopTests\\target\\HadoopTests-1.0-SNAPSHOT.jar");
+        conf.setJar("D:\\tcc\\TESTES\\HadoopTests\\target\\HadoopTests-1.0-SNAPSHOT.jar");
 
         conf.setOutputKeyClass(Text.class);
         conf.setOutputValueClass(FloatWritable.class);
