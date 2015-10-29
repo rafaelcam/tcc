@@ -103,6 +103,7 @@
         <!-- Aplicação Angular -->
         <script src="app/app.js"></script>
         <script src="app/temperatura/controller.js"></script>
+        <script src="app/temperatura/services.js"></script>
         <script src="app/pessoa/controller.js"></script>
         <script src="app/pessoa/services.js"></script>
         <script src="app/pessoa/constants.js"></script>
@@ -215,6 +216,12 @@
                             </li>
                             <li class="current">
                                 <a href="calendar.html" title="">Temperatura Diária {{temperatura}}</a>
+                            </li>
+                        </ul>
+                        
+                        <ul class="crumb-buttons" id="statusprocess" >
+                            <li style="margin-top: 10px; border: none;">
+                                <img width="132" src="resources/assets/img/ajax-loader.gif" alt="logo" />
                             </li>
                         </ul>
                     </div>

@@ -23,8 +23,6 @@ public class PessoaRecurso {
     @Produces({ MediaType.APPLICATION_JSON/* , MediaType.APPLICATION_XML */ })
     @Path("/all")
     public List<Pessoa> getPessoasJSONP() {
- 
-    	System.out.println("Inject Temp: "+new TemperaturaDiariaBO());
     	
         List<Pessoa> listP = Util.getInstance().getlPessoa();
  

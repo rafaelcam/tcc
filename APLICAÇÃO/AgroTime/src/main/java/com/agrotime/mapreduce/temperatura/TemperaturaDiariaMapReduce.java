@@ -9,6 +9,7 @@ import com.agrotime.mapper.temperatura.TemperaturaDiariaMapper;
 import com.agrotime.reduce.temperatura.TemperaturaDiariaReduce;
 import com.agrotime.util.Propriedades;
 import java.security.PrivilegedExceptionAction;
+import java.util.logging.Logger;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.Text;
@@ -19,6 +20,7 @@ import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapred.TextInputFormat;
 import org.apache.hadoop.mapred.TextOutputFormat;
 import org.apache.hadoop.security.UserGroupInformation;
+import org.eclipse.jdt.internal.compiler.batch.Main;
 
 /**
  *
@@ -26,6 +28,8 @@ import org.apache.hadoop.security.UserGroupInformation;
  */
 public class TemperaturaDiariaMapReduce {
     public void runMapReduce(final String mes) throws Exception {
+        System.out.println("<<<<<---------------- Executando MapReduce Temperatura Diária ---------------->>>>>");
+        
         UserGroupInformation ugi = UserGroupInformation.createRemoteUser(Propriedades.USER_HDFS); 
 
             ugi.doAs(new PrivilegedExceptionAction<Void>() {

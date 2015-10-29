@@ -22,6 +22,7 @@ public class MyApplication extends Application {
     public Set<Class<?>> getClasses() {
         final Set<Class<?>> classes = new HashSet<Class<?>>();
         classes.add(PessoaRecurso.class);
+        classes.add(TemperaturaDiariaRecurso.class);
         return classes;
     }
 

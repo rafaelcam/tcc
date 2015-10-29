@@ -1,60 +1,113 @@
-agroTimeApp.controller("temperaturaController", function($scope, serviceForm) {
-    
-    var ids = ["#chart_temperatura_janeiro", 
-                 "#chart_temperatura_fevereiro", 
-                 "#chart_temperatura_marco", 
-                 "#chart_temperatura_abril",
-                 "#chart_temperatura_maio",
-                 "#chart_temperatura_junho",
-                 "#chart_temperatura_julho",
-                 "#chart_temperatura_agosto",
-                 "#chart_temperatura_setembro",
-                 "#chart_temperatura_outubro",
-                 "#chart_temperatura_novembro",
-                 "#chart_temperatura_dezembro"];
-    
-    angular.forEach(ids, function (id, index) {
-        plotarDados(id);
-    });
-    
-    function plotarDados(id) {
-        // Sample Data
-        var d1 = [[1262304000000, 0], [1264982400000, 500], [1267401600000, 700], [1270080000000, 1300], [1272672000000, 2600], [1275350400000, 1300], [1277942400000, 1700], [1280620800000, 1300], [1283299200000, 1500], [1285891200000, 2000], [1288569600000, 1500], [1291161600000, 1200]];
+agroTimeApp.controller("temperaturaController", function($scope, serviceTemperatura) { 
+             
+    processTemperaturasPorMes();
+             
+    function processTemperaturasPorMes() {
+        serviceTemperatura.getTemperaturasPorMes().success(
+                function (data, status, headers, config) {
 
-        var data1 = [
-                { label: "Temperatura", data: d1, color: App.getLayoutColorCode('blue') }
-        ];
-
-        $.plot(id, data1, $.extend(true, {}, Plugins.getFlotDefaults(), {
-                xaxis: {
-                        min: (new Date(2009, 12, 1)).getTime(),
-                        max: (new Date(2010, 11, 2)).getTime(),
-                        mode: "time",
-                        tickSize: [1, "month"],
-                        monthNames: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-                        tickLength: 0
-                },
-                series: {
-                        lines: {
-                                fill: true,
-                                lineWidth: 1.5
-                        },
-                        points: {
-                                show: true,
-                                radius: 2.5,
-                                lineWidth: 1.1
-                        },
-                        grow: { active: true, growings:[ { stepMode: "maximum" } ] }
-                },
-                grid: {
-                        hoverable: true,
-                        clickable: true
-                },
-                tooltip: true,
-                tooltipOpts: {
-                        content: '%s: %y'
-                }
-        }));
+                    plotarDados(data);
+                    $("#statusprocess").hide();
+                }).error(function (data, status, headers, config) {
+                    $("#statusprocess").hide();
+                    switch (status) {
+                        case 401:
+                        {
+                            $scope.message = "Você precisa ser autenticado!";
+                            break;
+                        }
+                        case 500:
+                        {
+                            $scope.message = "Erro!";
+                            break;
+                        }
+                    }
+                    console.log(data, status);
+        });
     }
     
+    function plotarDados(data) {
+        
+        angular.forEach(data, function (value, key) {
+            
+            var d1 = construirDadosParaGrafico(value);
+        
+            var data1 = [
+                    { label: "Temperatura", data: d1, color: App.getLayoutColorCode('blue') }
+            ];
+
+            $.plot(getIdGraphPorNameMes(key), data1, $.extend(true, {}, Plugins.getFlotDefaults(), {
+                    yaxis: {
+                            min: 0,
+                            max: 60
+                            },
+                    xaxis: {
+                            min: 1,
+                            max: d1.length
+                    },
+                    series: {
+                            lines: {
+                                    fill: true,
+                                    lineWidth: 1.5
+                            },
+                            points: {
+                                    show: true,
+                                    radius: 2.5,
+                                    lineWidth: 1.1
+                            },
+                            grow: { active: true, growings:[ { stepMode: "maximum" } ] }
+                    },
+                    grid: {
+                            hoverable: true,
+                            clickable: true
+                    },
+                    tooltip: true,
+                    tooltipOpts: {
+                            content: '%s: %yº'
+                    }
+            }));
+            
+            
+        });
+
+    }
+    
+    function construirDadosParaGrafico(data) {
+        var array = [];
+        
+        angular.forEach(data, function (value, key) {
+            array.push([key, value]);
+        });
+        
+        return array;
+    }
+    
+    function getIdGraphPorNameMes(mes){
+        
+        if (mes === "Janeiro") {
+            return "#chart_temperatura_janeiro";
+        } if (mes === "Fevereiro") {
+            return "#chart_temperatura_fevereiro";
+        } if (mes === "Marco") {
+            return "#chart_temperatura_marco";
+        } if (mes === "Abril") {
+            return "#chart_temperatura_abril";
+        } if (mes === "Maio") {
+            return "#chart_temperatura_maio";
+        } if (mes === "Junho") {
+            return "#chart_temperatura_junho";
+        } if (mes === "Julho") {
+            return "#chart_temperatura_julho";
+        } if (mes === "Agosto") {
+            return "#chart_temperatura_agosto";
+        } if (mes === "Setembro") {
+            return "#chart_temperatura_setembro";
+        } if (mes === "Outubro") {
+            return "#chart_temperatura_outubro";
+        } if (mes === "Novembro") {
+           return "#chart_temperatura_novembro"; 
+        } if (mes === "Dezembro") {
+           return "#chart_temperatura_dezembro"; 
+        }
+    }     
 });
