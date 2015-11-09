@@ -31,7 +31,7 @@ public class CarregaDadosProtim {
                 public Void run() throws Exception {
                    
                     CarregaDadosProtim c = new CarregaDadosProtim();
-                    c.transferDataFromHDFS(1996, 2015, "D:\\Repositorios Git\\tcc\\DADOS METEREOLOGICOS PROTIM PLATAFORMAS");
+                    c.transferDataFromHDFS(1996, 2015, "D:\\tcc\\DADOS METEREOLOGICOS PROTIM PLATAFORMAS");
                     return null; 
                 }
             });
@@ -44,7 +44,7 @@ public class CarregaDadosProtim {
         
         Configuration conf = new Configuration();
         conf.set("hadoop.job.ugi", "hduser");
-        conf.set("fs.default.name", "hdfs://192.168.81.100:9000");
+        conf.set("fs.default.name", "hdfs://192.168.222.10:9000");
 
         FileSystem fs = FileSystem.get(conf);
         

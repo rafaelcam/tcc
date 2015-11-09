@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.agrotime.mapreduce.temperatura;
+package com.agrotime.mapreduce;
 
-import com.agrotime.mapper.temperatura.TemperaturaDiariaMapper;
-import com.agrotime.reduce.temperatura.TemperaturaDiariaReduce;
+import com.agrotime.mapper.TemperaturaDiariaMapper;
+import com.agrotime.reduce.TemperaturaDiariaReduce;
 import com.agrotime.util.Propriedades;
 import java.security.PrivilegedExceptionAction;
-import java.util.logging.Logger;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.Text;
@@ -20,7 +19,6 @@ import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapred.TextInputFormat;
 import org.apache.hadoop.mapred.TextOutputFormat;
 import org.apache.hadoop.security.UserGroupInformation;
-import org.eclipse.jdt.internal.compiler.batch.Main;
 
 /**
  *
@@ -45,7 +43,7 @@ public class TemperaturaDiariaMapReduce {
                     long milliSeconds = 1000*60*60;
                     conf.setLong("mapred.task.timeout", milliSeconds);
 
-                    conf.setJar(Propriedades.CAMINHO_WAR);
+                    conf.setJar(Propriedades.CAMINHO_JAR);
 
                     conf.setOutputKeyClass(Text.class);
                     conf.setOutputValueClass(FloatWritable.class);

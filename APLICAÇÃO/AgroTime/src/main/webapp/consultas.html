@@ -177,14 +177,14 @@
                             </a>
                         </li>
 
-                        <li class="current">
+                        <li >
                             <a href="temperatura.html">
                                 <i class="icon-fire"></i>
                                 Temperatura Diária
                             </a>
                         </li>
 
-                        <li>
+                        <li class="current">
                             <a href="consultas.html">
                                 <i class="icon-search"></i>
                                 Consultas Periódicas
@@ -197,7 +197,7 @@
             </div>
             <!-- /Sidebar -->
 
-            <div id="content" ng-controller="temperaturaController">
+            <div id="content" ng-controller="consultasController">
                 <div class="container">
                     <!-- Breadcrumbs line -->
                     <div class="crumbs">
@@ -207,7 +207,7 @@
                                 <a href="index.html">Início</a>
                             </li>
                             <li class="current">
-                                <a href="calendar.html" title="">Temperatura Diária</a>
+                                <a href="calendar.html" title="">Consultas Periódicas</a>
                             </li>
                         </ul>
                         
@@ -222,208 +222,65 @@
                     <!--=== Page Header ===-->
                     <div class="page-header">
                         <div class="page-title">
-                            <h3>Temperatura Diária</h3>
-                            <span>Temperatura Diária media de todos os dias do ano.</span>
+                            <h3>Consultas Periódicas</h3>
+                            <span>Realize uma consulta probabilística de variáveis do tempo em um periodo do ano.</span>
                         </div>
                     </div>
                     <!-- /Page Header -->
 
                     <!--=== Filled Charts ===-->
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-12">
                             <div class="widget box">
                                 <div class="widget-header">
-                                    <h4><i class="icon-reorder"></i> Janeiro</h4>
-                                    <div class="toolbar no-padding">
-                                        <div class="btn-group">
-                                            <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
-                                        </div>
-                                    </div>
+                                    <h4><i class="icon-reorder"></i> Parametros da Consulta</h4>
                                 </div>
                                 <div class="widget-content">
-                                    <div id="chart_temperatura_janeiro" class="chart"></div>
-                                </div>
-                            </div>
-                        </div>
+                                    <form class="form-horizontal row-border" action="#">
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Intervalo de Meses</label>
+                                            <div class="col-md-10">
+                                                    <div class="row">
+                                                        <div class="col-md-4">
+                                                            <select class="form-control" name="select">
+                                                                <option value="opt1">Janeiro</option>
+                                                                <option value="opt2">Fevereiro</option>
+                                                                <option value="opt3">Março</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-4" style="width: 70px; text-align: center; margin-top: 5px;">
+                                                            até
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            <select class="form-control" name="select">
+                                                                <option value="opt1">Janeiro</option>
+                                                                <option value="opt2">Fevereiro</option>
+                                                                <option value="opt3">Março</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                            </div>
+                                        </div>
 
-                        <div class="col-md-4">
-                            <div class="widget box">
-                                <div class="widget-header">
-                                    <h4><i class="icon-reorder"></i> Fevereiro</h4>
-                                    <div class="toolbar no-padding">
-                                        <div class="btn-group">
-                                            <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
+                                        
+                                        <div class="form-group">
+                                            <label class="col-md-2 control-label">Variáveis</label>
+                                            <div class="col-md-10">
+                                                <label class="checkbox-inline">
+                                                        <input type="checkbox" class="uniform" value=""> Temperatura
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                        <input type="checkbox" class="uniform" value="" > Velocidade do Vento
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                        <input type="checkbox" class="uniform" value="" > Checkbox 2
+                                                </label>
+                                                <label class="checkbox-inline">
+                                                        <input type="checkbox" class="uniform" value="" > Checkbox 2
+                                                </label>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="widget-content">
-                                    <div id="chart_temperatura_fevereiro" class="chart"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="widget box">
-                                <div class="widget-header">
-                                    <h4><i class="icon-reorder"></i> Março</h4>
-                                    <div class="toolbar no-padding">
-                                        <div class="btn-group">
-                                            <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-content">
-                                    <div id="chart_temperatura_marco" class="chart"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="widget box">
-                                <div class="widget-header">
-                                    <h4><i class="icon-reorder"></i> Abril</h4>
-                                    <div class="toolbar no-padding">
-                                        <div class="btn-group">
-                                            <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-content">
-                                    <div id="chart_temperatura_abril" class="chart"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="widget box">
-                                <div class="widget-header">
-                                    <h4><i class="icon-reorder"></i> Maio</h4>
-                                    <div class="toolbar no-padding">
-                                        <div class="btn-group">
-                                            <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-content">
-                                    <div id="chart_temperatura_maio" class="chart"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="widget box">
-                                <div class="widget-header">
-                                    <h4><i class="icon-reorder"></i> Junho</h4>
-                                    <div class="toolbar no-padding">
-                                        <div class="btn-group">
-                                            <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-content">
-                                    <div id="chart_temperatura_junho" class="chart"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="widget box">
-                                <div class="widget-header">
-                                    <h4><i class="icon-reorder"></i> Julho</h4>
-                                    <div class="toolbar no-padding">
-                                        <div class="btn-group">
-                                            <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-content">
-                                    <div id="chart_temperatura_julho" class="chart"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="widget box">
-                                <div class="widget-header">
-                                    <h4><i class="icon-reorder"></i> Agosto</h4>
-                                    <div class="toolbar no-padding">
-                                        <div class="btn-group">
-                                            <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-content">
-                                    <div id="chart_temperatura_agosto" class="chart"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="widget box">
-                                <div class="widget-header">
-                                    <h4><i class="icon-reorder"></i> Setembro</h4>
-                                    <div class="toolbar no-padding">
-                                        <div class="btn-group">
-                                            <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-content">
-                                    <div id="chart_temperatura_setembro" class="chart"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="widget box">
-                                <div class="widget-header">
-                                    <h4><i class="icon-reorder"></i> Outubro</h4>
-                                    <div class="toolbar no-padding">
-                                        <div class="btn-group">
-                                            <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-content">
-                                    <div id="chart_temperatura_outubro" class="chart"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="widget box">
-                                <div class="widget-header">
-                                    <h4><i class="icon-reorder"></i> Novembro</h4>
-                                    <div class="toolbar no-padding">
-                                        <div class="btn-group">
-                                            <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-content">
-                                    <div id="chart_temperatura_novembro" class="chart"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="widget box">
-                                <div class="widget-header">
-                                    <h4><i class="icon-reorder"></i> Dezembro</h4>
-                                    <div class="toolbar no-padding">
-                                        <div class="btn-group">
-                                            <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="widget-content">
-                                    <div id="chart_temperatura_dezembro" class="chart"></div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

@@ -1,7 +1,11 @@
-package com.agrotime.mapper.temperatura;
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.agrotime.mapper;
 
 import java.io.IOException;
-
 import org.apache.hadoop.io.FloatWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -11,14 +15,20 @@ import org.apache.hadoop.mapred.Mapper;
 import org.apache.hadoop.mapred.OutputCollector;
 import org.apache.hadoop.mapred.Reporter;
 
-public class TemperaturaDiariaMapper extends MapReduceBase implements Mapper<LongWritable, Text, Text, FloatWritable> {
+/**
+ *
+ * @author jrcsilva
+ */
+public class VelocidadeVentoMapper extends MapReduceBase implements Mapper<LongWritable, Text, Text, FloatWritable> {
     
-    String mesParam;
+    String mesInicio;
+    String mesFim;
     
     @Override
     public void configure(JobConf job) {
-        mesParam = job.get("mes");
-        super.configure(job); //To change body of generated methods, choose Tools | Templates.
+        mesInicio = job.get("mesInicio");
+        mesFim = job.get("mesFim");
+        super.configure(job); 
     }
     
     @Override
@@ -30,8 +40,8 @@ public class TemperaturaDiariaMapper extends MapReduceBase implements Mapper<Lon
         String[] mes = datetime[0].split("/");
         String chave = datetime[0].substring(0, 5);
 
-        if(mes[1].equals(this.mesParam)) {
-            output.collect(new Text(chave), new FloatWritable(Float.parseFloat(atributos[13])));
+        if(Integer.parseInt(mes[1]) >= Integer.parseInt(mesInicio) && Integer.parseInt(mes[1]) <= Integer.parseInt(mesFim)) {
+            output.collect(new Text(chave), new FloatWritable(Float.parseFloat(atributos[6])));
         }
     }
 }

@@ -5,7 +5,7 @@
  */
 package com.agrotime.bo;
 
-import com.agrotime.mapreduce.temperatura.TemperaturaDiariaMapReduce;
+import com.agrotime.mapreduce.TemperaturaDiariaMapReduce;
 import com.agrotime.util.HDFSUtil;
 import java.util.HashMap;
 import java.util.LinkedHashMap;

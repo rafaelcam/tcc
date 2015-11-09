@@ -33,7 +33,7 @@ public class Controle {
 
                     Configuration conf = new Configuration();
                     conf.set("hadoop.job.ugi", "hduser");
-                    conf.set("fs.default.name", "hdfs://192.168.81.100:9000");
+                    conf.set("fs.default.name", "hdfs://192.168.222.10:9000");
 
                     FileSystem fs = FileSystem.get(conf);
 
@@ -61,7 +61,7 @@ public class Controle {
 
                 Configuration conf = new Configuration();
                 conf.set("hadoop.job.ugi", "hduser");
-                conf.set("fs.default.name", "hdfs://192.168.81.100:9000");
+                conf.set("fs.default.name", "hdfs://192.168.222.10:9000");
 
                 FileSystem fs = FileSystem.get(conf);
                 
@@ -89,7 +89,7 @@ public class Controle {
 
                 Configuration conf = new Configuration();
                 conf.set("hadoop.job.ugi", "hduser");
-                conf.set("fs.default.name", "hdfs://192.168.81.100:9000");
+                conf.set("fs.default.name", "hdfs://192.168.222.10:9000");
 
                 FileSystem fs = FileSystem.get(conf);
 
@@ -114,7 +114,7 @@ public class Controle {
 
                 Configuration conf = new Configuration();
                 conf.set("hadoop.job.ugi", "hduser");
-                conf.set("fs.default.name", "hdfs://192.168.81.100:9000");
+                conf.set("fs.default.name", "hdfs://192.168.222.10:9000");
 
                 FileSystem fs = FileSystem.get(conf);
 
