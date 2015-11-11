@@ -36,7 +36,7 @@ public class VelocidadeVentoReduce extends MapReduceBase implements Reducer<Text
         }
         
         float media = soma / cont;
-        
+        System.out.println("Key: "+key+" Value: "+media);
         output.collect(key, new FloatWritable(media));
     }
 }

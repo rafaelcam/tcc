@@ -5,8 +5,8 @@
  */
 package com.agrotime.mapreduce;
 
-import com.agrotime.mapper.TemperaturaDiariaMapper;
-import com.agrotime.reduce.TemperaturaDiariaReduce;
+import com.agrotime.mapper.VelocidadeVentoMapper;
+import com.agrotime.reduce.VelocidadeVentoReduce;
 import com.agrotime.util.Propriedades;
 import java.security.PrivilegedExceptionAction;
 import org.apache.hadoop.fs.Path;
@@ -33,8 +33,8 @@ public class VelocidadeVentoMapReduce {
             ugi.doAs(new PrivilegedExceptionAction<Void>() {
                 public Void run() throws Exception {
                    
-                    JobConf conf = new JobConf(TemperaturaDiariaMapReduce.class);
-                    conf.setJobName("Velocidade do Vento do Mes "+mesInicio+" até o mes "+mesFim);
+                    JobConf conf = new JobConf(VelocidadeVentoMapReduce.class);
+                    conf.setJobName("Velocidade do Vento do Mes "+mesInicio+" ate o mes "+mesFim);
                     conf.set("hadoop.job.ugi", Propriedades.USER_HDFS);
                     conf.set("fs.default.name", Propriedades.URL_HDFS);
                     conf.set("mapred.job.tracker", Propriedades.URL_JOB_TRACKER);
@@ -49,15 +49,15 @@ public class VelocidadeVentoMapReduce {
                     conf.setOutputKeyClass(Text.class);
                     conf.setOutputValueClass(FloatWritable.class);
 
-                    conf.setMapperClass(TemperaturaDiariaMapper.class);
-                    conf.setCombinerClass(TemperaturaDiariaReduce.class);
-                    conf.setReducerClass(TemperaturaDiariaReduce.class);
+                    conf.setMapperClass(VelocidadeVentoMapper.class);
+                    conf.setCombinerClass(VelocidadeVentoReduce.class);
+                    conf.setReducerClass(VelocidadeVentoReduce.class);
 
                     conf.setInputFormat(TextInputFormat.class);
                     conf.setOutputFormat(TextOutputFormat.class);
 
                     FileInputFormat.setInputPaths(conf, new Path(Propriedades.INPUT_HDFS_AGROTIME));
-                    FileOutputFormat.setOutputPath(conf, new Path(Propriedades.OUTPUT_TEMPERATURA_DIARIA+mesInicio+mesFim));
+                    FileOutputFormat.setOutputPath(conf, new Path(Propriedades.OUTPUT_VELOCIDADE_VENTO+mesInicio+mesFim));
 
                     JobClient.runJob(conf);
                     

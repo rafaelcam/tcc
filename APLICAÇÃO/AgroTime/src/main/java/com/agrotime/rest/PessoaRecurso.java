@@ -12,7 +12,6 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.agrotime.bo.TemperaturaDiariaBO;
 import com.agrotime.entidades.Pessoa;
 
 @Path("/pessoa")

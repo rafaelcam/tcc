@@ -6,14 +6,8 @@
 package com.agrotime.rest;
 
 import com.agrotime.bo.TemperaturaDiariaBO;
-import com.agrotime.entidades.Pessoa;
-import com.sun.javafx.scene.control.skin.VirtualFlow;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
+import com.agrotime.bo.VelocidadeVentoBO;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -51,7 +45,9 @@ public class TemperaturaDiariaRecurso {
             listDadosMensais.put("Janeiro", mapTemperaturasDiarias);
             */
             
-            return new TemperaturaDiariaBO().processarDadosTemperaturaDiaria();
+            //return new TemperaturaDiariaBO().processarDadosTemperaturaDiaria();
+            new VelocidadeVentoBO().processarDadosVelocidadeVento("03", "04");
+            return null;
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;
