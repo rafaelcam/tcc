@@ -102,11 +102,8 @@
 
         <!-- Aplicação Angular -->
         <script src="app/app.js"></script>
-        <script src="app/temperatura/controller.js"></script>
-        <script src="app/temperatura/services.js"></script>
-        <script src="app/pessoa/controller.js"></script>
-        <script src="app/pessoa/services.js"></script>
-        <script src="app/pessoa/constants.js"></script>
+        <script src="app/buscaperiodica/controller.js"></script>
+        <script src="app/buscaperiodica/services.js"></script>
     </head>
 
     <body class="breakpoint-1200 theme-dark">
@@ -197,7 +194,7 @@
             </div>
             <!-- /Sidebar -->
 
-            <div id="content" ng-controller="consultasController">
+            <div id="content" ng-controller="buscaPeriodicaController">
                 <div class="container">
                     <!-- Breadcrumbs line -->
                     <div class="crumbs">
@@ -287,7 +284,7 @@
                                         <div class="form-group">
                                             <label class="col-md-2 control-label"></label>
                                             <div class="col-md-10">
-                                                <button class="btn btn-info">Processar</button>
+                                                <button class="btn btn-info" ng-click="processBuscaPeriodica();">Processar</button>
                                             </div>
                                         </div>
                                         

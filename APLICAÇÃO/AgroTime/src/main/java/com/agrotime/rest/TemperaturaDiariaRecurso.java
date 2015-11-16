@@ -5,13 +5,14 @@
  */
 package com.agrotime.rest;
 
-import com.agrotime.bo.TemperaturaDiariaBO;
-import com.agrotime.bo.VelocidadeVentoBO;
 import java.util.Map;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+
+import com.agrotime.bo.VelocidadeVentoBO;
 
 /**
  *
@@ -46,7 +47,7 @@ public class TemperaturaDiariaRecurso {
             */
             
             //return new TemperaturaDiariaBO().processarDadosTemperaturaDiaria();
-            new VelocidadeVentoBO().processarDadosVelocidadeVento("03", "04");
+            //new VelocidadeVentoBO().processarDadosVelocidadeVento("01", "12");
             return null;
         } catch (Exception ex) {
             ex.printStackTrace();

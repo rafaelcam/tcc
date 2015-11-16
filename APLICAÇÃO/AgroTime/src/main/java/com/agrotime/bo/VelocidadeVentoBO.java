@@ -5,11 +5,13 @@
  */
 package com.agrotime.bo;
 
-import com.agrotime.mapreduce.TemperaturaDiariaMapReduce;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.agrotime.mapreduce.VelocidadeVentoMapReduce;
 import com.agrotime.util.HDFSUtil;
-import java.util.LinkedHashMap;
-import java.util.Map;
 
 /**
  *
@@ -17,12 +19,16 @@ import java.util.Map;
  */
 public class VelocidadeVentoBO {
     
-    public void processarDadosVelocidadeVento(String mesInicio, String mesFim) throws Exception {
+	List<Map<String, Double>> listMapResult = new ArrayList<Map<String, Double>>();
+	Map<String, Double> mapResult = new LinkedHashMap<String, Double>();
+	
+    public Map<String, Double> processarDadosVelocidadeVento(String mesInicio, String mesFim) throws Exception {
 
             new HDFSUtil().removeDirectory("/agrotime/output/velocidadevento");
             new VelocidadeVentoMapReduce().runMapReduce(mesInicio, mesFim);
             lerDadosVelocidadeVento(mesInicio, mesFim);
             
+            return mapResult;
     }
     
     public void lerDadosVelocidadeVento(String mesInicio, String mesFim) throws Exception {
@@ -30,9 +36,22 @@ public class VelocidadeVentoBO {
         
         String[] lines = new HDFSUtil().readLinesFile("/agrotime/output/velocidadevento/mes"+mesInicio+mesFim+"/part-00000");
         
+        for(int i = Integer.parseInt(mesInicio); i <= Integer.parseInt(mesFim); i++) {
+        	Map<String, Double> map = new LinkedHashMap<String, Double>();
+        	
+        	for(String line : lines) {
+        		
+        		if(Integer.parseInt((line.substring(0, 5).split("/"))[1]) == i) {
+        			map.put(line.substring(0, 5), Double.parseDouble(line.substring(6)));
+        		}
+        		
+            }
+        	
+        	listMapResult.add(map);
+		}
         
-        for(String line : lines) {
-            System.out.println(line);
+        for(Map<String, Double> map : listMapResult) {
+        	mapResult.putAll(map);
         }
     }
 }
