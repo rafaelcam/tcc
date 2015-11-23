@@ -5,6 +5,7 @@
  */
 package com.agrotime.rest;
 
+import com.agrotime.bo.TemperaturaDiariaBO;
 import java.util.Map;
 
 import javax.ws.rs.GET;
@@ -12,7 +13,6 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import com.agrotime.bo.VelocidadeVentoBO;
 
 /**
  *
@@ -26,29 +26,7 @@ public class TemperaturaDiariaRecurso {
     @Path("/all")
     public Map<String, Map<Double, Double>> getPessoasJSONP() {
         try {
-            /*
-            Map<Double, Double> mapTemperaturasDiarias = new LinkedHashMap<Double, Double>();
-            mapTemperaturasDiarias.put(1.0, 15.0);
-            mapTemperaturasDiarias.put(2.0, 21.0);
-            mapTemperaturasDiarias.put(3.0, 24.0);
-            mapTemperaturasDiarias.put(4.0, 32.0);
-            mapTemperaturasDiarias.put(5.0, 40.0);
-            mapTemperaturasDiarias.put(6.0, 20.0);
-            mapTemperaturasDiarias.put(7.0, 14.0);
-            mapTemperaturasDiarias.put(8.0, 26.0);
-            mapTemperaturasDiarias.put(9.0, 34.0);
-            mapTemperaturasDiarias.put(10.0, 6.0);
-            mapTemperaturasDiarias.put(11.0, 15.0);
-            mapTemperaturasDiarias.put(12.0, 17.0);
-            mapTemperaturasDiarias.put(13.0, 14.0);
-            
-            Map<String,Map<Double, Double>> listDadosMensais = new LinkedHashMap<String,Map<Double, Double>>();
-            listDadosMensais.put("Janeiro", mapTemperaturasDiarias);
-            */
-            
-            //return new TemperaturaDiariaBO().processarDadosTemperaturaDiaria();
-            //new VelocidadeVentoBO().processarDadosVelocidadeVento("01", "12");
-            return null;
+            return new TemperaturaDiariaBO().processarDadosTemperaturaDiaria();
         } catch (Exception ex) {
             ex.printStackTrace();
             return null;

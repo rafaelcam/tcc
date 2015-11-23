@@ -31,7 +31,8 @@ agroTimeApp.controller("temperaturaController", function($scope, serviceTemperat
         angular.forEach(data, function (value, key) {
             
             var d1 = construirDadosParaGrafico(value);
-        
+            console.log("Dados:");
+            console.log(d1);
             var data1 = [
                     { label: "Temperatura", data: d1, color: App.getLayoutColorCode('blue') }
             ];

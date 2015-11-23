@@ -42,7 +42,9 @@ public class VelocidadeVentoBO {
         	for(String line : lines) {
         		
         		if(Integer.parseInt((line.substring(0, 5).split("/"))[1]) == i) {
-        			map.put(line.substring(0, 5), Double.parseDouble(line.substring(6)));
+                                String[] data = line.substring(0, 5).split("/");
+                            
+        			map.put(data[1]+"/"+data[0], Double.parseDouble(line.substring(6)));
         		}
         		
             }
