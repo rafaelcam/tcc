@@ -239,20 +239,38 @@
                                             <div class="col-md-10">
                                                     <div class="row">
                                                         <div class="col-md-4">
-                                                            <select class="form-control" name="select">
-                                                                <option value="opt1">Janeiro</option>
-                                                                <option value="opt2">Fevereiro</option>
-                                                                <option value="opt3">Março</option>
+                                                            <select class="form-control" name="select" ng-model="mesInicio">
+                                                                <option value="01">Janeiro</option>
+                                                                <option value="02">Fevereiro</option>
+                                                                <option value="03">Março</option>
+                                                                <option value="04">Abril</option>
+                                                                <option value="05">Maio</option>
+                                                                <option value="06">Junho</option>
+                                                                <option value="07">Julho</option>
+                                                                <option value="08">Agosto</option>
+                                                                <option value="09">Setembro</option>
+                                                                <option value="10">Outubro</option>
+                                                                <option value="11">Novembro</option>
+                                                                <option value="12">Dezembro</option>
                                                             </select>
                                                         </div>
                                                         <div class="col-md-4" style="width: 70px; text-align: center; margin-top: 5px;">
                                                             até
                                                         </div>
                                                         <div class="col-md-4">
-                                                            <select class="form-control" name="select" >
-                                                                <option value="opt1">Janeiro</option>
-                                                                <option value="opt2">Fevereiro</option>
-                                                                <option value="opt3">Março</option>
+                                                            <select class="form-control" name="select" ng-model="mesFim" >
+                                                                <option value="01">Janeiro</option>
+                                                                <option value="02">Fevereiro</option>
+                                                                <option value="03">Março</option>
+                                                                <option value="04">Abril</option>
+                                                                <option value="05">Maio</option>
+                                                                <option value="06">Junho</option>
+                                                                <option value="07">Julho</option>
+                                                                <option value="08">Agosto</option>
+                                                                <option value="09">Setembro</option>
+                                                                <option value="10">Outubro</option>
+                                                                <option value="11">Novembro</option>
+                                                                <option value="12">Dezembro</option>
                                                             </select>
                                                         </div>
                                                     </div>
@@ -264,19 +282,19 @@
                                             <label class="col-md-2 control-label">Variáveis</label>
                                             <div class="col-md-10">
                                                 <label class="checkbox-inline">
-                                                        <input type="checkbox" class="uniform" value=""> Temperatura
+                                                        <input type="checkbox" class="uniform" ng-model="variaveis.temperatura"> Temperatura
                                                 </label>
                                                 <label class="checkbox-inline">
-                                                        <input type="checkbox" class="uniform" value="" > Velocidade do Vento
+                                                        <input type="checkbox" class="uniform" ng-model="variaveis.velocidadeVento"> Velocidade do Vento
                                                 </label>
                                                 <label class="checkbox-inline">
-                                                        <input type="checkbox" class="uniform" value="" > Alt. da base das nuvens na primeira camada 
+                                                        <input type="checkbox" class="uniform" ng-model="variaveis.alturaNuvens"> Alt. da base das nuvens na primeira camada 
                                                 </label>
                                                 <label class="checkbox-inline">
-                                                        <input type="checkbox" class="uniform" value="" > Cobertura de nuvens
+                                                        <input type="checkbox" class="uniform" ng-model="variaveis.coberturaNuvens"> Cobertura de nuvens
                                                 </label>
                                                 <label class="checkbox-inline">
-                                                        <input type="checkbox" class="uniform" value="" > Umidade Relativa do Ar
+                                                        <input type="checkbox" class="uniform" ng-model="variaveis.umidadeAr"> Umidade Relativa do Ar
                                                 </label>
                                             </div>
                                         </div>
@@ -300,6 +318,24 @@
                         <div class="col-md-12">
                             <div class="widget box">
                                 <div class="widget-header">
+                                    <h4><i class="icon-reorder"></i> Temperatura</h4>
+                                    <div class="toolbar no-padding">
+                                        <div class="btn-group">
+                                            <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget-content">
+                                    <div id="chart_temperatura" class="chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="widget box">
+                                <div class="widget-header">
                                     <h4><i class="icon-reorder"></i> Velocidade do Vento</h4>
                                     <div class="toolbar no-padding">
                                         <div class="btn-group">
@@ -313,7 +349,7 @@
                             </div>
                         </div>
                     </div>
-
+                    
                 </div>
                 <!-- /.container -->
 

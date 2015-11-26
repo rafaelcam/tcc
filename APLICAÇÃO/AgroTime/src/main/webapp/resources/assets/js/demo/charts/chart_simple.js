@@ -6,7 +6,7 @@
 
 "use strict";
 
-$(document).ready(function(){
+$(document).ready(function() {
 
 	// Sample Data
 	var sin = [], cos = [];
@@ -45,7 +45,7 @@ $(document).ready(function(){
 			},
 			tooltip: true,
 			tooltipOpts: {
-				content: '%s: %y'
+				content: '%s: %y.0'
 			}
 		})
 	);

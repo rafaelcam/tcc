@@ -24,6 +24,7 @@ public class MyApplication extends Application {
         classes.add(PessoaRecurso.class);
         classes.add(TemperaturaDiariaRecurso.class);
         classes.add(VelocidadeVentoRecurso.class);
+        classes.add(TemperaturaRecurso.class);
         return classes;
     }
 

@@ -10,4 +10,5 @@ public class Propriedades {
         
         public static String OUTPUT_TEMPERATURA_DIARIA = "/agrotime/output/temperaturadiaria/mes";
         public static String OUTPUT_VELOCIDADE_VENTO = "/agrotime/output/velocidadevento/mes";
+        public static String OUTPUT_TEMPERATURA = "/agrotime/output/temperatura/mes";
 }
