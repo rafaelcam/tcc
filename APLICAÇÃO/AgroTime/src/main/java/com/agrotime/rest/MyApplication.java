@@ -21,10 +21,14 @@ public class MyApplication extends Application {
     @Override
     public Set<Class<?>> getClasses() {
         final Set<Class<?>> classes = new HashSet<Class<?>>();
-        classes.add(PessoaRecurso.class);
         classes.add(TemperaturaDiariaRecurso.class);
         classes.add(VelocidadeVentoRecurso.class);
         classes.add(TemperaturaRecurso.class);
+        classes.add(AlturaNuvensRecurso.class);
+        classes.add(CoberturaNuvensRecurso.class);
+        classes.add(UmidadeRelativaRecurso.class);
+        classes.add(VarsHojeRecurso.class);
+        
         return classes;
     }
 

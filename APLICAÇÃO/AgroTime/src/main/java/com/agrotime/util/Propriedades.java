@@ -11,4 +11,8 @@ public class Propriedades {
         public static String OUTPUT_TEMPERATURA_DIARIA = "/agrotime/output/temperaturadiaria/mes";
         public static String OUTPUT_VELOCIDADE_VENTO = "/agrotime/output/velocidadevento/mes";
         public static String OUTPUT_TEMPERATURA = "/agrotime/output/temperatura/mes";
+        public static String OUTPUT_ALTURANUVENS = "/agrotime/output/alturanuvens/mes";
+        public static String OUTPUT_COBERTURANUVENS = "/agrotime/output/coberturanuvens/mes";
+        public static String OUTPUT_UMIDADERELATIVA = "/agrotime/output/umidaderelativa/mes";
+        public static String OUTPUT_VARSHOJE = "/agrotime/output/varshoje";
 }

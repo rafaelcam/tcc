@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <title>Charts &amp; Statistics | Melon - Flat &amp; Responsive Admin Template</title>
+        <title>AgroTime</title>
 
         <!--=== CSS ===-->
 
@@ -176,7 +176,7 @@
 
                         <li >
                             <a href="temperatura.html">
-                                <i class="icon-fire"></i>
+                                <i class="icon-sun"></i>
                                 Temperatura Diária
                             </a>
                         </li>
@@ -282,19 +282,19 @@
                                             <label class="col-md-2 control-label">Variáveis</label>
                                             <div class="col-md-10">
                                                 <label class="checkbox-inline">
-                                                        <input type="checkbox" class="uniform" ng-model="variaveis.temperatura"> Temperatura
+                                                        <input type="checkbox" class="uniform" ng-model="variaveis.temperatura.check"> Temperatura
                                                 </label>
                                                 <label class="checkbox-inline">
-                                                        <input type="checkbox" class="uniform" ng-model="variaveis.velocidadeVento"> Velocidade do Vento
+                                                        <input type="checkbox" class="uniform" ng-model="variaveis.velocidadeVento.check"> Velocidade do Vento
                                                 </label>
                                                 <label class="checkbox-inline">
-                                                        <input type="checkbox" class="uniform" ng-model="variaveis.alturaNuvens"> Alt. da base das nuvens na primeira camada 
+                                                        <input type="checkbox" class="uniform" ng-model="variaveis.alturaNuvens.check"> Alt. da base das nuvens na primeira camada 
                                                 </label>
                                                 <label class="checkbox-inline">
-                                                        <input type="checkbox" class="uniform" ng-model="variaveis.coberturaNuvens"> Cobertura de nuvens
+                                                        <input type="checkbox" class="uniform" ng-model="variaveis.coberturaNuvens.check"> Cobertura de nuvens
                                                 </label>
                                                 <label class="checkbox-inline">
-                                                        <input type="checkbox" class="uniform" ng-model="variaveis.umidadeAr"> Umidade Relativa do Ar
+                                                        <input type="checkbox" class="uniform" ng-model="variaveis.umidadeAr.check"> Umidade Relativa do Ar
                                                 </label>
                                             </div>
                                         </div>
@@ -314,7 +314,7 @@
                     </div>
                     <!-- /Filled Charts -->
                     
-                    <div class="row">
+                    <div class="row" ng-show="variaveis.temperatura.view">
                         <div class="col-md-12">
                             <div class="widget box">
                                 <div class="widget-header">
@@ -332,7 +332,7 @@
                         </div>
                     </div>
                     
-                    <div class="row">
+                    <div class="row" ng-show="variaveis.velocidadeVento.view">
                         <div class="col-md-12">
                             <div class="widget box">
                                 <div class="widget-header">
@@ -345,6 +345,60 @@
                                 </div>
                                 <div class="widget-content">
                                     <div id="chart_velocidade_vento" class="chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row" ng-show="variaveis.alturaNuvens.view">
+                        <div class="col-md-12">
+                            <div class="widget box">
+                                <div class="widget-header">
+                                    <h4><i class="icon-reorder"></i> Altura da base das nuvens na primeira camada</h4>
+                                    <div class="toolbar no-padding">
+                                        <div class="btn-group">
+                                            <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget-content">
+                                    <div id="chart_altura_nuvens" class="chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row" ng-show="variaveis.coberturaNuvens.view">
+                        <div class="col-md-12">
+                            <div class="widget box">
+                                <div class="widget-header">
+                                    <h4><i class="icon-reorder"></i> Cobertura de nuvens</h4>
+                                    <div class="toolbar no-padding">
+                                        <div class="btn-group">
+                                            <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget-content">
+                                    <div id="chart_cobertura_nuvens" class="chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row" ng-show="variaveis.umidadeAr.view">
+                        <div class="col-md-12">
+                            <div class="widget box">
+                                <div class="widget-header">
+                                    <h4><i class="icon-reorder"></i> Umidade Relativa do Ar</h4>
+                                    <div class="toolbar no-padding">
+                                        <div class="btn-group">
+                                            <span class="btn btn-xs widget-collapse"><i class="icon-angle-down"></i></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="widget-content">
+                                    <div id="chart_umidade_relativa" class="chart"></div>
                                 </div>
                             </div>
                         </div>

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-        <title>Charts &amp; Statistics | Melon - Flat &amp; Responsive Admin Template</title>
+        <title>AgroTime</title>
 
         <!--=== CSS ===-->
 
@@ -81,6 +81,18 @@
                 FormComponents.init(); // Init all form-specific plugins
             });
         </script>
+
+        <!-- Aplicação Angular -->
+        <script src="resources/angular/angular.min.js"></script>
+        <script src="resources/angular/angular-ui-router.min.js"></script>
+        
+        <!-- Biblioteva Moments para manipular datas -->
+        <script src="resources/assets/js/moment.js"></script>
+
+        <!-- Aplicação Angular -->
+        <script src="app/app.js"></script>
+        <script src="app/inicio/controller.js"></script>
+        <script src="app/inicio/services.js"></script>
     </head>
 
     <body class="breakpoint-1200 theme-dark">
@@ -153,7 +165,7 @@
 
                         <li >
                             <a href="temperatura.html">
-                                <i class="icon-fire"></i>
+                                <i class="icon-sun"></i>
                                 Temperatura Diária
                             </a>
                         </li>
@@ -171,22 +183,15 @@
             </div>
             <!-- /Sidebar -->
 
-            <div id="content">
+            <div id="content" ng-controller="inicioController">
                 <div class="container">
                     <!-- Breadcrumbs line -->
                     <div class="crumbs">
                         <ul id="breadcrumbs" class="breadcrumb">
-                            <li>
+                            <li class="current">
                                 <i class="icon-home"></i>
                                 <a href="index.html">Início</a>
                             </li>
-                            <li class="current">
-                                <a href="calendar.html" title="">Calendário</a>
-                            </li>
-                        </ul>
-
-                        <ul class="crumb-buttons">
-                            <li><a href="charts.html" title=""><i class="icon-signal"></i><span>Estatísticas</span></a></li>
                         </ul>
                     </div>
                     <!-- /Breadcrumbs line -->
@@ -194,27 +199,115 @@
                     <!--=== Page Header ===-->
                     <div class="page-header">
                         <div class="page-title">
-                            <h3>Início</h3>
-                            <span>Boa Noite, João Rafael!</span>
+                            <h3>Previsão para Hoje</h3>
+                            <span>Possíveis variáveis do tempo para o dia de Hoje</span>
                         </div>
                     </div>
                     <!-- /Page Header -->
 
                     <!--=== Page Content ===-->
+                    <!--=== Statboxes ===-->
+                    <div class="row row-bg"> <!-- .row-bg -->
+                            <div class="col-sm-4 col-md-2">
+                                    <div class="statbox widget box box-shadow">
+                                            <div class="widget-content">
+                                                    <div class="visual blue">
+                                                            <i class="icon-calendar"></i>
+                                                    </div>
+                                                    <div class="title">Informações referentes a</div>
+                                                    <div class="value">{{hoje}}</div>
+                                                    <a class="more" href="javascript:void(0);">Ver Mais <i class="pull-right icon-angle-right"></i></a>
+                                            </div>
+                                    </div> <!-- /.smallstat -->
+                            </div> <!-- /.col-md-3 -->
+
+                            <div class="col-sm-4 col-md-2">
+                                    <div class="statbox widget box box-shadow">
+                                            <div class="widget-content">
+                                                    <div class="visual yellow">
+                                                            <i class="icon-umbrella"></i>
+                                                    </div>
+                                                    <div class="title">Cobertura de Nuvens</div>
+                                                    <div class="value">{{variaveis.coberturaNuvens}}</div>
+                                                    <a class="more" href="javascript:void(0);">Ver Mais <i class="pull-right icon-angle-right"></i></a>
+                                            </div>
+                                    </div> <!-- /.smallstat -->
+                            </div> <!-- /.col-md-3 -->
+
+                            <div class="col-sm-4 col-md-2 hidden-xs">
+                                    <div class="statbox widget box box-shadow">
+                                            <div class="widget-content">
+                                                    <div class="visual red">
+                                                            <i class="icon-sun"></i>
+                                                    </div>
+                                                    <div class="title">Temperatura Média</div>
+                                                    <div class="value">{{variaveis.temperatura}}</div>
+                                                    <a class="more" href="javascript:void(0);">Ver Mais <i class="pull-right icon-angle-right"></i></a>
+                                            </div>
+                                    </div> <!-- /.smallstat -->
+                            </div> <!-- /.col-md-3 -->
+
+                            <div class="col-sm-4 col-md-2 hidden-xs">
+                                    <div class="statbox widget box box-shadow">
+                                            <div class="widget-content">
+                                                    <div class="visual green">
+                                                            <i class="icon-tint"></i>
+                                                    </div>
+                                                    <div class="title">Umidade Relativa do Ar</div>
+                                                    <div class="value">{{variaveis.umidadeAr}}</div>
+                                                    <a class="more" href="javascript:void(0);">Ver Mais <i class="pull-right icon-angle-right"></i></a>
+                                            </div>
+                                    </div> <!-- /.smallstat -->
+                            </div> <!-- /.col-md-3 -->
+                            <div class="col-sm-4 col-md-2 hidden-xs">
+                                    <div class="statbox widget box box-shadow">
+                                            <div class="widget-content">
+                                                    <div class="visual cyan">
+                                                            <i class="icon-cloud"></i>
+                                                    </div>
+                                                    <div class="title">Altura das Nuvens</div>
+                                                    <div class="value">{{variaveis.alturaNuvens}}</div>
+                                                    <a class="more" href="javascript:void(0);">Ver Mais <i class="pull-right icon-angle-right"></i></a>
+                                            </div>
+                                    </div> <!-- /.smallstat -->
+                            </div> <!-- /.col-md-3 -->
+                            <div class="col-sm-4 col-md-2 hidden-xs">
+                                    <div class="statbox widget box box-shadow">
+                                            <div class="widget-content">
+                                                    <div class="visual purple">
+                                                            <i class="icon-fire"></i>
+                                                    </div>
+                                                    <div class="title">Velocidade do Vento</div>
+                                                    <div class="value">{{variaveis.velocidadeVento}}</div>
+                                                    <a class="more" href="javascript:void(0);">Ver Mais <i class="pull-right icon-angle-right"></i></a>
+                                            </div>
+                                    </div> <!-- /.smallstat -->
+                            </div> <!-- /.col-md-3 -->
+                    </div> <!-- /.row -->
+                    
                     <div class="row">
-                        <!--=== Example Box ===-->
                         <div class="col-md-12">
-                            <div class="widget box">
-                                <div class="widget-header">
-                                    <h4><i class="icon-reorder"></i> Example Box</h4>
-                                </div>
-                                <div class="widget-content">
-                                    <p>Lorem Ipsum.</p>
+                            <div class="widget">
+                                <div class="widget-content" style="text-align: justify;">
+                                    <p>Cras facilisis orci dapibus, porta nulla eu, rutrum augue. Quisque interdum tempor auctor. Donec libero ex, dapibus fermentum est id, 
+                                        ullamcorper mattis dui. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam eget justo arcu. Nunc mattis vulputate faucibus. 
+                                        Nulla lorem dui, convallis non mi sed, cursus aliquam mauris. Donec finibus convallis mi. Nullam porttitor dolor nec orci luctus rhoncus. 
+                                        Interdum et malesuada fames ac ante ipsum primis in faucibus. Integer pulvinar, neque eget commodo vulputate, lorem dolor scelerisque augue, 
+                                        eget sodales purus odio quis diam. Nulla nunc orci, mollis eget aliquam nec, scelerisque ac arcu. Quisque eget varius mi. Integer odio nisi, 
+                                        molestie in sagittis vitae, iaculis sed mauris. Pellentesque vel dictum enim, at dapibus justo. Donec eget blandit ligula, eget consectetur justo. 
+                                        Quisque accumsan ornare metus. In hac habitasse platea dictumst. Sed orci velit, ullamcorper et aliquam at, sollicitudin id metus. Sed eget urna a 
+                                        neque semper congue sed vel sem. Etiam sem sem, aliquam sit amet dictum sit amet, blandit at turpis. Proin nisi ipsum, imperdiet condimentum pretium 
+                                        eget, lobortis a ex. Donec ullamcorper enim at eros suscipit, ut hendrerit lacus laoreet. Nullam vitae placerat eros. Nunc aliquam sem eu varius 
+                                        laoreet. Donec nec erat posuere, eleifend lectus et, volutpat urna. Donec quis nunc tellus. Maecenas sed est arcu. Mauris mauris velit, aliquet id nunc 
+                                        non, porttitor ullamcorper erat. Nullam imperdiet elit nec arcu facilisis finibus. Cras dictum lacus at eros imperdiet faucibus. Pellentesque id arcu
+                                        vestibulum, ullamcorper tortor eu, maximus ipsum. Nam efficitur nunc sit amet tempus congue. Fusce justo augue, pretium sed vulputate efficitur, dapibus 
+                                        vel sem. Donec vel metus eu nibh lacinia vulputate in eget turpis. Sed nec lectus sit amet sem sagittis pretium sit amet eget velit. Proin tristiq
+                                        ue mattis tortor at tempus. Vestibulum et tincidunt dui. Donec pellentesque cursus.</p>
                                 </div>
                             </div>
-                        </div> <!-- /.col-md-12 -->
-                        <!-- /Example Box -->
-                    </div> <!-- /.row -->
+                        </div>
+                    </div>
+                    <!-- /Statboxes -->
                     <!-- /Page Content -->
 
                 </div>
