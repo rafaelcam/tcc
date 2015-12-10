@@ -1,4 +1,4 @@
-agroTimeApp.factory("serviceTemperatura", function(config, $http) {
+agroTimeApp.factory("serviceTemperatura", function($http) {
  
     var _getTemperaturasPorMes = function() {
         return $http.get("rest/temperaturadiaria/all");
